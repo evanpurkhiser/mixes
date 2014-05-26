@@ -7,6 +7,10 @@ var gulp    = require('gulp'),
 
 var buildDir = 'build';
 
+gulp.task('index', function() {
+    return gulp.src('src/index.html').pipe(gulp.dest(buildDir));
+});
+
 gulp.task('sass', function() {
     return gulp.src('src/sass/screen.sass')
         .pipe(sass({outputStyle: 'compressed', errLogToConsole: true}))
