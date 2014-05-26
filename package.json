@@ -1,0 +1,15 @@
+{
+  "name": "mixes-app",
+  "author": "Evan Purkhiser",
+  "version": "0.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/EvanPurkhiser/mixes",
+  "description": "A website dedicated to making it simple to listen to my DJ mixes!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/EvanPurkhiser/mixes.git"
+  },
+  "devDependencies": {
+    "gulp": "^3.6.2"
+  }
+}
