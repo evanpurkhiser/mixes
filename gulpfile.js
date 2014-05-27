@@ -35,11 +35,10 @@ gulp.task('watch', function() {
     gulp.watch('src/index.html', ['index']);
     gulp.watch('src/css/**/*.styl', ['css']);
     gulp.watch('src/js/**/*.js', ['js']);
-
 });
 
 gulp.task('serve', function() {
-    connect.server({root: buildDir});
+    return connect.server({root: buildDir, port: 8000});
 });
 
 gulp.task('clean', function() {
