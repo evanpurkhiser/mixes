@@ -2,8 +2,11 @@
 
 var gulp        = require('gulp'),
     stylus      = require('gulp-stylus'),
+    bower       = require('gulp-bower-files'),
     concat      = require('gulp-concat-sourcemap'),
     connect     = require('gulp-connect'),
+    filter      = require('gulp-filter'),
+    streamQueue = require('streamqueue');
 
 var buildDir = 'build',
     cssPaths = [];
@@ -19,7 +22,10 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
-    return gulp.src('src/js/**/*.js')
+    return streamQueue({objectMode: true})
+        .queue(bower().pipe(filter('**/*.js')))
+        .queue(gulp.src('src/js/**/*.js'))
+        .done()
         .pipe(concat('app.js'))
         .pipe(gulp.dest(buildDir));
 });
