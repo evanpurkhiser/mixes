@@ -1,19 +1,20 @@
 'use strict';
 
-var gulp    = require('gulp'),
-    sass    = require('gulp-sass'),
-    concat  = require('gulp-concat-sourcemap'),
-    connect = require('gulp-connect');
+var gulp        = require('gulp'),
+    stylus      = require('gulp-stylus'),
+    concat      = require('gulp-concat-sourcemap'),
+    connect     = require('gulp-connect'),
 
-var buildDir = 'build';
+var buildDir = 'build',
+    cssPaths = [];
 
 gulp.task('index', function() {
     return gulp.src('src/index.html').pipe(gulp.dest(buildDir));
 });
 
-gulp.task('sass', function() {
-    return gulp.src('src/sass/screen.sass')
-        .pipe(sass({outputStyle: 'compressed', errLogToConsole: true}))
+gulp.task('css', function() {
+    return gulp.src('src/css/screen.styl')
+        .pipe(stylus({include: cssPaths}))
         .pipe(gulp.dest(buildDir));
 });
 
@@ -25,7 +26,7 @@ gulp.task('js', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/index.html', ['index']);
-    gulp.watch('src/sass/**/*.sass', ['sass']);
+    gulp.watch('src/css/**/*.styl', ['css']);
     gulp.watch('src/js/**/*.js', ['js']);
 
 });
