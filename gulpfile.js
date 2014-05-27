@@ -6,6 +6,7 @@ var gulp        = require('gulp'),
     concat      = require('gulp-concat-sourcemap'),
     connect     = require('gulp-connect'),
     filter      = require('gulp-filter'),
+    clean       = require('gulp-clean'),
     streamQueue = require('streamqueue');
 
 var buildDir = 'build',
@@ -41,4 +42,9 @@ gulp.task('serve', function() {
     connect.server({root: buildDir});
 });
 
+gulp.task('clean', function() {
+    return gulp.src('build', {read: false}).pipe(clean())
+});
+
+gulp.task('build',   ['index', 'css', 'js'])
 gulp.task('default', ['serve', 'watch']);
