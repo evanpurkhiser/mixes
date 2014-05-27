@@ -1,0 +1,4 @@
+{
+	"ice_status": "http://serenity.evanpurkhiser.com/stream/status.json",
+	"mixes_json": "http://serenity.evanpurkhiser.com/mixes.json"
+}
