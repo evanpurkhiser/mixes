@@ -1,0 +1,2 @@
+Mixes = { models: {}, views: {}, templates: {} };
+

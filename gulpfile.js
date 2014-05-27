@@ -38,7 +38,7 @@ gulp.task('js', function() {
         .queue(templates)
         .done()
         .pipe(print())
-        .pipe(concat('app.js'))
+        .pipe(concat('application.js'))
         .pipe(gulp.dest(buildDir));
 });
 
