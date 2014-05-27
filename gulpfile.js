@@ -7,6 +7,7 @@ var gulp        = require('gulp'),
     connect     = require('gulp-connect'),
     filter      = require('gulp-filter'),
     clean       = require('gulp-clean'),
+    print       = require('gulp-print'),
     streamQueue = require('streamqueue');
 
 var buildDir = 'build',
@@ -27,6 +28,7 @@ gulp.task('js', function() {
         .queue(bower().pipe(filter('**/*.js')))
         .queue(gulp.src('src/js/**/*.js'))
         .done()
+        .pipe(print())
         .pipe(concat('app.js'))
         .pipe(gulp.dest(buildDir));
 });
