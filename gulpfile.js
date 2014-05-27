@@ -8,6 +8,8 @@ var gulp        = require('gulp'),
     filter      = require('gulp-filter'),
     clean       = require('gulp-clean'),
     print       = require('gulp-print'),
+    handlebars  = require('gulp-handlebars'),
+    defModule   = require('gulp-define-module'),
     streamQueue = require('streamqueue');
 
 var buildDir = 'build',
@@ -24,9 +26,16 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
+    var templates = gulp.src('src/templates/**/*.hbs')
+        .pipe(handlebars())
+        .pipe(defModule('plain', {
+            wrapper: 'Mixes.templates["<%= name %>"] = <%= handlebars %>'
+         }));
+
     return streamQueue({objectMode: true})
         .queue(bower().pipe(filter('**/*.js')))
         .queue(gulp.src('src/js/**/*.js'))
+        .queue(templates)
         .done()
         .pipe(print())
         .pipe(concat('app.js'))
