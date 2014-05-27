@@ -9,34 +9,40 @@ var gulp       = require('gulp'),
 
 var buildDir = 'build';
 
-gulp.task('index', function() {
+gulp.task('index', function()
+{
     return gulp.src('src/index.html').pipe(gulp.dest(buildDir));
 });
 
-gulp.task('css', function() {
+gulp.task('css', function()
+{
     return gulp.src('src/css/screen.styl')
         .pipe(stylus())
         .pipe(gulp.dest(buildDir));
 });
 
-gulp.task('js', function() {
+gulp.task('js', function()
+{
     return gulp.src('src/js/application.js')
         .pipe(plumber())
         .pipe(browserify({transform: ['browserify-hogan']}))
         .pipe(gulp.dest(buildDir));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function()
+{
     gulp.watch('src/index.html', ['index']);
     gulp.watch('src/css/**/*.styl', ['css']);
     gulp.watch('src/js/**/*.js', ['js']);
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', function()
+{
     return connect.server({root: buildDir, port: 8000});
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', function()
+{
     return gulp.src('build', {read: false}).pipe(clean())
 });
 
