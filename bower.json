@@ -2,8 +2,13 @@
   "name": "mixes-app",
   "version": "0.0.0",
   "homepage": "https://github.com/EvanPurkhiser/mixes",
-  "authors": ["Evan Purkhiser <evanpurkhiser@gmail.com>"],
+  "authors": [
+    "Evan Purkhiser <evanpurkhiser@gmail.com>"
+  ],
   "description": "A website dedicated to making it simple to listen to my DJ mixes!",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "backbone": "~1.1.2"
+  }
 }
