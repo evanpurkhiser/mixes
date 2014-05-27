@@ -1,19 +1,13 @@
 'use strict';
 
-var gulp        = require('gulp'),
-    stylus      = require('gulp-stylus'),
-    bower       = require('gulp-bower-files'),
-    concat      = require('gulp-concat-sourcemap'),
-    connect     = require('gulp-connect'),
-    filter      = require('gulp-filter'),
-    clean       = require('gulp-clean'),
-    print       = require('gulp-print'),
-    handlebars  = require('gulp-handlebars'),
-    defModule   = require('gulp-define-module'),
-    streamQueue = require('streamqueue');
+var gulp       = require('gulp'),
+    plumber    = require('gulp-plumber'),
+    stylus     = require('gulp-stylus'),
+    connect    = require('gulp-connect'),
+    clean      = require('gulp-clean'),
+    browserify = require('gulp-browserify');
 
-var buildDir = 'build',
-    cssPaths = [];
+var buildDir = 'build';
 
 gulp.task('index', function() {
     return gulp.src('src/index.html').pipe(gulp.dest(buildDir));
@@ -21,24 +15,14 @@ gulp.task('index', function() {
 
 gulp.task('css', function() {
     return gulp.src('src/css/screen.styl')
-        .pipe(stylus({include: cssPaths}))
+        .pipe(stylus())
         .pipe(gulp.dest(buildDir));
 });
 
 gulp.task('js', function() {
-    var templates = gulp.src('src/templates/**/*.hbs')
-        .pipe(handlebars())
-        .pipe(defModule('plain', {
-            wrapper: 'Mixes.templates["<%= name %>"] = <%= handlebars %>'
-         }));
-
-    return streamQueue({objectMode: true})
-        .queue(bower().pipe(filter('**/*.js')))
-        .queue(gulp.src('src/js/**/*.js'))
-        .queue(templates)
-        .done()
-        .pipe(print())
-        .pipe(concat('application.js'))
+    return gulp.src('src/js/application.js')
+        .pipe(plumber())
+        .pipe(browserify({transform: ['browserify-hogan']}))
         .pipe(gulp.dest(buildDir));
 });
 

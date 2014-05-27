@@ -1,2 +1,3 @@
-Mixes = { models: {}, views: {}, templates: {} };
+'use strict';
 
+var Backbone = require('backbone');
