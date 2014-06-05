@@ -5,6 +5,7 @@ var gulp       = require('gulp'),
     stylus     = require('gulp-stylus'),
     connect    = require('gulp-connect'),
     clean      = require('gulp-clean'),
+    deploy     = require('gulp-gh-pages'),
     browserify = require('gulp-browserify');
 
 var buildDir = 'build';
@@ -44,6 +45,11 @@ gulp.task('serve', function()
 gulp.task('clean', function()
 {
     return gulp.src('build', {read: false}).pipe(clean())
+});
+
+gulp.task('deploy', function()
+{
+    return gulp.src('build/**/*').pipe(deploy());
 });
 
 gulp.task('build',   ['index', 'css', 'js'])
