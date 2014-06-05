@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+i {
+  font-style: normal;
+}
+body {
+  font: 1em/1.5em "Open Sans";
+  color: #34495e;
+}
+#landing {
+  max-width: 600px;
+  margin: 80px auto;
+}
+#landing h1 {
+  font-size: 1.4em;
+}
+#landing h1 i {
+  color: #4ec34b;
+}
+#landing .bio {
+  text-align: justify;
+}
