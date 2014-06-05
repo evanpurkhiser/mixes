@@ -47,7 +47,7 @@ gulp.task('clean', function()
     return gulp.src('build', {read: false}).pipe(clean())
 });
 
-gulp.task('deploy', function()
+gulp.task('deploy', ['build'], function()
 {
     return gulp.src('build/**/*').pipe(deploy());
 });
