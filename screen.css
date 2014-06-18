@@ -1,23 +1,68 @@
 * {
   box-sizing: border-box;
 }
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
 i {
   font-style: normal;
+}
+a {
+  text-decoration: none;
 }
 body {
   font: 1em/1.5em "Open Sans";
   color: #34495e;
-}
-#landing {
   max-width: 600px;
   margin: 80px auto;
 }
-#landing h1 {
+#description h1 {
   font-size: 1.4em;
 }
-#landing h1 i {
+#description h1 i {
   color: #4ec34b;
 }
-#landing .bio {
+#description .bio {
   text-align: justify;
+}
+.live-stream-status {
+  overflow: hidden;
+  height: 40px;
+  font-size: 0.9em;
+}
+.live-stream-status.live .off-air {
+  margin-top: -40px;
+}
+.live-stream-status .off-air {
+  color: #c9d3d5;
+  line-height: 40px;
+  transition: margin 500ms;
+}
+.live-stream-status .on-air {
+  color: #888;
+  margin: 5px 0;
+  border-radius: 2px;
+  line-height: 30px;
+background
+}
+.live-stream-status a.listen {
+  display: inline-block;
+  border-radius: 2px;
+  background: #4ec34b;
+  color: #fff;
+  padding: 0 8px;
+}
+.live-stream-status .stats {
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.live-stream-status .stats li {
+  float: left;
+  display: inline-block;
+  margin-left: 10px;
+}
+.live-stream-status .stats li:first-child {
+  margin-left: 0;
 }
