@@ -23,6 +23,7 @@
     "backbone": "^1.1.2",
     "backbone-poller": "^0.2.9",
     "hogan.js": "^2.0.0",
-    "jquery": "^2.1.1"
+    "jquery": "^2.1.1",
+    "underscore": "^1.6.0"
   }
 }
