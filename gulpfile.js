@@ -34,7 +34,7 @@ gulp.task('watch', function()
 {
     gulp.watch('src/index.html', ['index']);
     gulp.watch('src/css/**/*.styl', ['css']);
-    gulp.watch('src/js/**/*.js', ['js']);
+    gulp.watch(['src/js/**/*.js', 'src/templates/**/*.mustache'], ['js']);
 });
 
 gulp.task('serve', function()
