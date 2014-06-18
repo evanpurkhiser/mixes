@@ -17,6 +17,22 @@ module.exports = Backbone.View.extend(
         this.listenTo(this.model, 'change', this.render);
     },
 
+    render: function()
+    {
+        if (this.model.get('active'))
+        {
+            this.$('.genre').text(this.model.get('genre'));
+            this.$('.listeners').text(this.model.get('listeners'));
+            this.$('.listener-peak').text(this.model.get('listener_peak'));
+
+            this.watchStartedTime();
+        }
+
+        underscore.defer(underscore.bind(this.postRender, this));
+
+        return this;
+    },
+
     /**
      * Handle updating the 'started streaming' statistic every so often
      */
@@ -46,20 +62,6 @@ module.exports = Backbone.View.extend(
     postRender: function()
     {
         this.$el.toggleClass('live', this.model.get('active'));
-    },
-
-    render: function()
-    {
-        if (this.model.get('active'))
-        {
-            this.$('.genre').text(this.model.get('genre'));
-            this.$('.listeners').text(this.model.get('listeners'));
-            this.$('.listener-peak').text(this.model.get('listener_peak'));
-
-            this.watchStartedTime();
-        }
-
-        underscore.defer(underscore.bind(this.postRender, this));
 
         return this;
     },
