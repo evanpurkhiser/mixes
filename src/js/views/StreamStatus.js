@@ -11,6 +11,8 @@ module.exports = Backbone.View.extend(
     initialize: function()
     {
         this.$el.insertAfter('#description');
+        this.$el.html(template.render(this.model.attributes));
+
         this.listenTo(this.model, 'change', this.render);
     },
 
@@ -21,7 +23,12 @@ module.exports = Backbone.View.extend(
 
     render: function()
     {
-        this.$el.html(template.render(this.model.attributes));
+        if (this.model.get('active'))
+        {
+            this.$('.genre').text(this.model.get('genre'));
+            this.$('.listeners').text(this.model.get('listeners'));
+            this.$('.listener-peak').text(this.model.get('listener_peak'));
+        }
 
         underscore.defer(underscore.bind(this.postRender, this));
 
