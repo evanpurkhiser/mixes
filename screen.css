@@ -45,7 +45,7 @@ body {
   line-height: 30px;
 background
 }
-.live-stream-status a.listen {
+.live-stream-status .listen {
   display: inline-block;
   border-radius: 2px;
   background: #4ec34b;
@@ -65,4 +65,8 @@ background
 }
 .live-stream-status .stats li:first-child {
   margin-left: 0;
+}
+audio {
+  width: 100%;
+  margin-top: 20px;
 }
